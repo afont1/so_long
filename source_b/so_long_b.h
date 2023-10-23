@@ -15,6 +15,11 @@
 #include <mlx.h>
 #include <X11/X.h>
 #include <X11/keysym.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
+#include <math.h>
 #include "../ft_printf/include/ft_printf.h"
 #include "../GNL/get_next_line.h"
 
@@ -41,6 +46,7 @@ struct s_img
 	t_img_data	player;
 	t_img_data	item;
 	t_img_data	exit;
+	t_img_data	enemies;
 };
 
 typedef struct s_map		t_map;
@@ -53,6 +59,7 @@ struct s_map
 	int			exit;
 	int			player;
 	t_pos		exit_pos;
+	t_pos		enemies_pos;
 	t_pos		player_pos;
 };
 
@@ -93,3 +100,6 @@ void	is_exit_item(char **map, t_data *data);
 char	*ft_free_join(char *s1, char *s2);
 void	error_empty(char *gnl_map, char *message, t_data *data);
 void	init_map_data_2(char **map, t_data *data, int i, int j);
+void	move_enemies(t_data *data);
+t_pos	chose_direction(t_data *data);
+void	lose(t_data *data);
